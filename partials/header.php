@@ -15,8 +15,12 @@
             crossorigin="anonymous"></script>
 
       <link rel="stylesheet" href="./static/css/index.css">
+      <?php $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) ?>
+      <?php if ($uri == "/contacts-app/" || $uri == "/contacts-app/index.php"): ?>
+            <script defer src="./static/js/welcome.js"></script>
+      <?php endif ?>
       <title>SI, DOS DOS</title>
 </head>
 <body>
-  <?php require "partials/navbar.php" ?>
-        <main>
+<?php require "partials/navbar.php" ?>
+<main>
