@@ -1,5 +1,6 @@
 <?php
   require "database.php";
+  session_start();
   if(!isset($_SESSION["user"])){
     header("Location: login.php");
     return;
@@ -13,7 +14,7 @@
     }else{
       $name = $_POST["name"];
       $phoneNumber = $_POST["phone_number"];
-      $statement = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES (:name, :phone_number)");
+      $statement = $conn->prepare("INSERT INTO contacts (user_id, name, phone_number) VALUES ({$_SESSION['user']['id']},:name, :phone_number)");
       //Evitamos inyecciones sql
       $statement->bindParam(":name", $_POST["name"]);
       $statement->bindParam(":phone_number", $_POST["phone_number"]);

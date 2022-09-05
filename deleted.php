@@ -4,7 +4,7 @@
     header("Location: login.php");
     return;
   }
-  
+
   $id = $_GET["id"];
   $statement = $conn->prepare("SELECT * FROM contacts WHERE id = :id");
   $statement->execute([":id" => $id]);
